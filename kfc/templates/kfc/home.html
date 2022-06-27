@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>KFC Tashkent – Доставка КФС в Ташкенте</title>
+    <link rel="shortcut icon" href="{% static 'kfc/images/kfc-logo.jpg' %}" type="image/x-icon"/>
+    <link type="text/css" href="{% static 'kfc/css/styles.css' %}" rel="stylesheet" />
+</head>
+<body>
+
+<div class="info">
+
+{% block mainmenu %}
+<img class="main-icon" src="{% static 'kfc/images/kfc-logo.jpg' %}" width="100">
+
+	<table class="menu">
+        <tr>
+{% for c in cats %}
+            <td> <ul id="menu-item">{{ c.name }}</ul></td>
+{% endfor %}
+        </tr>
+    </table>
+
+    <div class="wpb_wrapper">
+			<h2 style="text-align: center;" data-customstyle="yes"><strong><span data-redactor-tag="span">KFC / КФС</span></strong></h2>
+<h2 style="text-align: center; color: red;"><strong>БЕСПЛАТНАЯ ДОСТАВКА </strong></h2>
+<h2 style="text-align: center; color: red;"><strong>в Ташкенте</strong></h2>
+<h3 style="text-align: center; font-size: 16px" data-customstyle="yes"><strong>Наша служба доставки работает для Вас ежедневно с 09:00 и до 03:00.</strong></h3>
+
+		</div>
+</div>
+{% endblock %}
+
+{% block maincontent %}
+    <div class="main-content">
+
+    {% for c in cats %}
+        {% if c.products_set.exists %}
+            <div style="background-color: #dd3333; width: 100px; align-items: center">{{ c.name }}</div>
+            {% for p in pros %}
+                {% if p.cat_id == c.pk %}
+                    <div>
+                    {{ p.cat }}
+                    {{ p.name }}
+                    {{ p.price }}
+                    <img src="{{ p.photo.url }}">
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+
+    </div>
+{% endblock %}
+
+</body>
+</html>
