@@ -33,21 +33,34 @@
 {% endblock %}
 
 {% block maincontent %}
-    <div class="main-content">
+    <div class="main-content" style="">
 
     {% for c in cats %}
         {% if c.products_set.exists %}
-            <div style="background-color: #dd3333; width: 100px; align-items: center">{{ c.name }}</div>
+           <div class="wpb_wrapper vc_column-inner">
+	<div class="wpb_text_column wpb_content_element ">
+		<div class="wpb_wrapper">
+			<h2 style="text-align: center;"><span style="color: #ff0000;">{{ c.name }}</span></h2>
+
+		</div>
+	</div>
+</div>
+            <div class="product" style="background: #f7f6f5;display: flex;">
+
             {% for p in pros %}
                 {% if p.cat_id == c.pk %}
-                    <div>
-                    {{ p.cat }}
-                    {{ p.name }}
-                    {{ p.price }}
-                    <img src="{{ p.photo.url }}">
+                    <div class="pro-content" style="display: inline-block">
+                        <img src="{{ p.photo.url }}" alt="">
+                        <span>{{ p.cat }}</span>
+                        <span>{{ p.name }}</span>
+                        <span>{{ p.price }}</span>
                     </div>
+
                 {% endif %}
             {% endfor %}
+
+            </div>
+
         {% endif %}
     {% endfor %}
 
