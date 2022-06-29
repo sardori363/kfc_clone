@@ -1,71 +1,103 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset='UTF-8'>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'kfc/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'kfc/css/styles.css' %}"/>
     <title>KFC Tashkent – Доставка КФС в Ташкенте</title>
-    <link rel="shortcut icon" href="{% static 'kfc/images/kfc-logo.jpg' %}" type="image/x-icon"/>
-    <link type="text/css" href="{% static 'kfc/css/styles.css' %}" rel="stylesheet" />
 </head>
 <body>
-
-<div class="info">
-
-{% block mainmenu %}
-<img class="main-icon" src="{% static 'kfc/images/kfc-logo.jpg' %}" width="100">
-
-	<table class="menu">
-        <tr>
-{% for c in cats %}
-            <td> <ul id="menu-item">{{ c.name }}</ul></td>
-{% endfor %}
-        </tr>
-    </table>
-
-    <div class="wpb_wrapper">
-			<h2 style="text-align: center;" data-customstyle="yes"><strong><span data-redactor-tag="span">KFC / КФС</span></strong></h2>
-<h2 style="text-align: center; color: red;"><strong>БЕСПЛАТНАЯ ДОСТАВКА </strong></h2>
-<h2 style="text-align: center; color: red;"><strong>в Ташкенте</strong></h2>
-<h3 style="text-align: center; font-size: 16px" data-customstyle="yes"><strong>Наша служба доставки работает для Вас ежедневно с 09:00 и до 03:00.</strong></h3>
-
-		</div>
-</div>
-{% endblock %}
-
-{% block maincontent %}
-    <div class="main-content" style="">
-
-    {% for c in cats %}
-        {% if c.products_set.exists %}
-           <div class="wpb_wrapper vc_column-inner">
-	<div class="wpb_text_column wpb_content_element ">
-		<div class="wpb_wrapper">
-			<h2 style="text-align: center;"><span style="color: #ff0000;">{{ c.name }}</span></h2>
-
-		</div>
-	</div>
-</div>
-            <div class="product" style="background: #f7f6f5;display: flex;">
-
-            {% for p in pros %}
-                {% if p.cat_id == c.pk %}
-                    <div class="pro-content" style="display: inline-block">
-                        <img src="{{ p.photo.url }}" alt="">
-                        <span>{{ p.cat }}</span>
-                        <span>{{ p.name }}</span>
-                        <span>{{ p.price }}</span>
+<header>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center">
+                <img src="{% static 'kfc/images/kfc-logo.jpg' %}" class="img-fluid logo" style="max-width: 100px">
+            </div>
+            <div class="cats mt-5" style="display: flex; justify-content: center;">
+                {% for c in cats %}
+                    <div class="cat d-none d-lg-block">
+                        <a href="#" class="cat text-uppercase text-decoration-none"
+                           style="color: #dd3333">{{ c.name }}</a>
                     </div>
 
-                {% endif %}
-            {% endfor %}
+                {% endfor %}
+            </div>
+            <div class="col-12 text-center">
+                <h2 class="text-uppercase mt-4">KFC / КФС</h2>
+            </div>
+            <div class="col-12 text-center">
+                <h2 class="text-uppercase mt-4" style="color: red">БЕСПЛАТНАЯ ДОСТАВКА</h2>
+            </div>
+            <div class="col-12 text-center">
+                <h2 class="mt-4" style="color: red">в Ташкенте</h2>
+            </div>
+            <div class="col-12 text-center mt-4 mb-3">
+                <b>Наша служба доставки работает для Вас ежедневно с 09:00 и до 03:00.</b>
+            </div>
+        </div>
+    </div>
+</header>
 
+{#    <div class="container">#}
+{#        <div class="row">#}
+{#            {% for c in cats %}#}
+{#                {% if c.products_set.exists %}#}
+{#                    <div class="col-12">#}
+{#                        <h2 class="text-center text-uppercase mt-3">{{ c.name }}</h2>#}
+{#                    </div>#}
+{#                    {% for p in pros %}#}
+{#                        {% if p.cat_id == c.pk %}#}
+{##}
+{#                        {% endif %}#}
+{#                    {% endfor %}#}
+{#                {% endif %}#}
+{#            {% endfor %}#}
+{#        </div>#}
+
+{% for c in cats %}
+    {% if c.products_set.exists %}
+
+        <section style="background-color: #ffffff">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="text-center mt-3 mb-4">
+                            {{ c.name }}
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background-color: #f7f6f5">
+            <div class="container">
+                <div class="row">
+                    {% for p in pros %}
+                        {% if p.cat_id == c.pk %}
+                            <div class="col-xl-3 col-sm-6 mt-5 text-center">
+                                <img src="{{ p.photo.url }}"
+                                     style="background-color: white; border-radius: 10px">
+                                <div class="text-uppercase pt-3" style="font-size: x-small;">{{ p.cat }}</div>
+                                <div style="font-size: medium;padding-bottom: 2px">{{ p.name }}</div>
+                                <div class="pb-3">{{ p.price }} UZS</div>
+                                <div class="btn btn-warning">В корзину</div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
             </div>
 
-        {% endif %}
-    {% endfor %}
+        </section>
 
-    </div>
-{% endblock %}
+    {% endif %}
+{% endfor %}
 
+<footer style="margin-bottom: 200px">
+
+</footer>
+<script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
