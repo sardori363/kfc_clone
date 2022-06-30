@@ -1,5 +1,5 @@
 html {
-    font-family: Open Sans,sans-serif;
+    font-family: Open Sans, sans-serif;
     font-size: 16px;
 }
 
@@ -8,11 +8,44 @@ header {
 }
 
 .cat {
-    font-family: Open Sans,sans-serif;
+    font-family: Open Sans, sans-serif;
     font-size: 16px;
     font-weight: 700;
     line-height: 20px;
     letter-spacing: -.5px;
     color: #dd3333;
     padding: 40px 10px 40px 10px;
+}
+
+.btn-basket {
+    background-color: #ffffff;
+    font-family: 'Oswald', sans-serif;
+    border: 1px solid #dddddd;
+    color: #333333;
+    height: 36px;
+    line-height: 34px;
+    /*width: 200px;*/
+    margin: 0 90px;
+    padding: 0 0.625rem;
+    font-size: .75rem;
+    font-weight: 600;
+}
+
+.pro-img {
+    background-color: white;
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+    transition: opacity 0.3s ease-in-out;
+    transform: translateZ(0);
+}
+
+.pro-card:hover > .pro-img {
+    z-index: 1;
+    box-shadow: 0 25px 35px -5px rgb(0 0 0 / 10%);
+}
+
+.pro-card:hover > .btn-basket {
+    background-color: #f6554b;
+    color: white;
 }

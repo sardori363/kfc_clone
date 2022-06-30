@@ -4,7 +4,7 @@ from django.urls import reverse
 class Products(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, db_index=True, max_length=255)
-    price = models.FloatField()
+    price = models.CharField(max_length=255)
     photo = models.ImageField(upload_to="photos/%Y/%m/%d/")
     time_create = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)
