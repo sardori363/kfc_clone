@@ -19,7 +19,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 text-center">
-                <img src="{% static 'kfc/images/kfc-logo.jpg' %}" class="img-fluid logo" style="max-width: 100px">
+                <a href="/"><img src="{% static 'kfc/images/kfc-logo.jpg' %}" class="img-fluid logo" style="max-width: 100px"></a>
             </div>
             <div class="cats mt-5" style="display: flex; justify-content: center;">
                 {% for c in cats %}
@@ -42,17 +42,17 @@
                 <img src="{{ product.photo.url }}" style="border: 1px solid #b4b1ad; height: 314px;width: 448.578px">
             </div>
             <div class="col-xl-6 col-sm-12" style="padding-left: 60px">
-                <h2 style="font-size: 1.875rem;line-height: 1.2;color: #222529;letter-spacing: -0.01em;font-weight: 700; font-family: sans-serif">{{ product.name }}</h2>
+                <h2 style="font-size: 1.875rem;line-height: 1.2;color: #222529;letter-spacing: -0.01em;font-weight: 700; font-family: sans-serif; margin-bottom: 20px">{{ product.name }}</h2>
 
-                <div class="rating" style="justify-content: ">
+                <div class="rating">
                     <input type="radio" name="star" id="star1"><label for="star1"></label>
                     <input type="radio" name="star" id="star2"><label for="star2"></label>
                     <input type="radio" name="star" id="star3"><label for="star3"></label>
                     <input type="radio" name="star" id="star4"><label for="star4"></label>
                     <input type="radio" name="star" id="star5"><label style="margin-right: 2px" for="star5"></label>
                 </div>
-
-                <p style="margin-bottom: 40px; font-size: x-large"><b>{{ product.price }} UZS</b></p>
+                <hr style="margin-top: 50px; width: 223px">
+                <p style="margin-bottom: 20px; font-size: x-large; margin-top: 22px"><b>{{ product.price }} UZS</b></p>
                 <p style="font-size: small"><span style="color: #b4b1ad">КАТЕГОРИЯ:</span> <b>{{ product.cat }}</b></p>
             </div>
         </div>
