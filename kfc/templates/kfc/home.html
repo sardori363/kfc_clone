@@ -10,9 +10,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
-    <title>KFC Tashkent – Доставка КФС в Ташкенте</title>
+    <link rel="shortcut icon" href="{% static 'kfc/images/kfc-logo.jpg' %}" type="image/x-icon"/>
+    <title>{{ name }}</title>
 </head>
 <body>
+{% block mainmenu %}
 <header>
     <div class="container">
         <div class="row justify-content-center">
@@ -27,6 +29,8 @@
                     </div>
 
                 {% endfor %}
+{% endblock %}
+{% block info %}
             </div>
             <div class="col-12 text-center">
                 <h2 class="text-uppercase mt-4">KFC / КФС</h2>
@@ -42,6 +46,7 @@
             </div>
         </div>
     </div>
+{% endblock %}
 </header>
 
 
@@ -68,11 +73,11 @@
                             <div class="col-xl-3 col-sm-6 mt-5 mb-5 text-center align-items-center pro-card">
                                 <img src="{{ p.photo.url }}" class="pro-img">
                                 <div class="text-uppercase pt-3 pro-cont" style="font-size: x-small; ">{{ p.cat }}</div>
-                                <div style="font-size: medium" class="pro-cont">{{ p.name }}</div>
-                                <div class="pb-3"> <b>{{ p.price }} UZS</b> </div>
+                                <div style="font-size: medium" class="pro-cont"><a class="text-decoration-none" style="color: black" href="/product/{{ p.slug }}">{{ p.name }}</a></div>
+                                <div class="pb-3"><b>{{ p.price }} UZS</b></div>
                                 <div class="btn-basket text-center text-uppercase">
 
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                          class="bi bi-bag-check" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd"
                                               d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
@@ -96,6 +101,7 @@
 <footer style="margin-bottom: 200px">
 
 </footer>
-<script src="js/bootstrap.bundle.min.js"></script>
+    </div>
+<script src="{% static 'kfc/js/bootstrap.bundle.js' %}"></script>
 </body>
 </html>

@@ -49,3 +49,54 @@ header {
     background-color: #f6554b;
     color: white;
 }
+
+.to-top {
+    cursor: pointer;
+}
+
+/*rating*/
+.rating {
+    position: absolute;
+    display: flex;
+    transform: translate(-50%, -50%)rotateY(180deg) ;
+    padding-right: 180px;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    display: block;
+    cursor: pointer;
+    width: 50px;
+    background: #ffffff;
+}
+
+.rating label::before {
+    content: '\f005';
+    font-family: 'FontAwesome';
+    position: relative;
+    display: block;
+    font-size: 15px;
+    color: #ccc;
+}
+
+.rating label::after {
+    content: '\f005';
+    font-family: 'FontAwesome';
+    position: absolute;
+    display: block;
+    font-size: 15px;
+    color: #FFD700;
+    top: 0;
+    opacity: 0;
+    transition: .5s;
+    text-shadow: 0 2px 5px rgba(0,0,0,.5);
+}
+
+.rating label:hover::after,
+.rating label:hover ~ label::after,
+.rating input:checked ~ label::after{
+     opacity: 1;
+}

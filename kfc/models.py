@@ -13,6 +13,9 @@ class Products(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('product', kwargs={'product_slug': self.slug})
+
 class Category(models.Model):
     name = models.CharField(max_length=100, db_index=True)
     slug = models.SlugField(unique=True, db_index=True, max_length=255)

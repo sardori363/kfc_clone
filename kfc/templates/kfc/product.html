@@ -1,0 +1,64 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'kfc/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'kfc/css/styles.css' %}"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'kfc/images/kfc-logo.jpg' %}" type="image/x-icon"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+    <title>{{ name }}</title>
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center">
+                <img src="{% static 'kfc/images/kfc-logo.jpg' %}" class="img-fluid logo" style="max-width: 100px">
+            </div>
+            <div class="cats mt-5" style="display: flex; justify-content: center;">
+                {% for c in cats %}
+                    <div class="cat d-none d-lg-block">
+                        <a href="#" class="cat text-uppercase text-decoration-none"
+                           style="color: #dd3333">{{ c.name }}</a>
+                    </div>
+
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</header>
+
+<section>
+    <div class="container" style="font-family: 'Oswald', sans-serif">
+        <div class="row">
+            <div class="col-xl-4 col-sm-12 text-start">
+                <img src="{{ product.photo.url }}" style="border: 1px solid #b4b1ad; height: 314px;width: 448.578px">
+            </div>
+            <div class="col-xl-6 col-sm-12" style="padding-left: 60px">
+                <h2 style="font-size: 1.875rem;line-height: 1.2;color: #222529;letter-spacing: -0.01em;font-weight: 700; font-family: sans-serif">{{ product.name }}</h2>
+
+                <div class="rating" style="justify-content: ">
+                    <input type="radio" name="star" id="star1"><label for="star1"></label>
+                    <input type="radio" name="star" id="star2"><label for="star2"></label>
+                    <input type="radio" name="star" id="star3"><label for="star3"></label>
+                    <input type="radio" name="star" id="star4"><label for="star4"></label>
+                    <input type="radio" name="star" id="star5"><label style="margin-right: 2px" for="star5"></label>
+                </div>
+
+                <p style="margin-bottom: 40px; font-size: x-large"><b>{{ product.price }} UZS</b></p>
+                <p style="font-size: small"><span style="color: #b4b1ad">КАТЕГОРИЯ:</span> <b>{{ product.cat }}</b></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="{% static 'kfc/js/bootstrap.bundle.js' %}"></script>
+</body>
+</html>
